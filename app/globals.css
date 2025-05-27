@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+body {
+  width: 100%;
+  background: #000;
+}
+.container {
+  margin: 0 auto;
+}
+:root {
+  font-size: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+ul {
+  margin-bottom: 0;
+}
+span {
+  font-size: inherit;
+}
+a,
+span,
+strong,
+button {
+  text-decoration: none;
+  /* color: inherit; */
+}
+a {
+  cursor: pointer;
+}
+a:hover,
+button:hover {
+  text-decoration: none;
+}
+.word {
+  white-space: nowrap;
+}
+.char {
+  display: inline-block;
+}
+
+@media screen and (min-width: 1401px) {
+  :root {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  :root {
+    font-size: 8px;
+  }
+}
+@media screen and (max-width: 1230px) {
+  :root {
+    font-size: 8px;
+  }
+  /* .container {
+    max-width: 1150px;
+  } */
+}
+@media screen and (max-width: 1199px) {
+  :root {
+    font-size: 8px;
+  }
+  /* .container {
+    max-width: 1020px;
+  } */
+}
+@media screen and (max-width: 1024px) {
+  :root {
+    font-size: 7px;
+  }
+  /* .container {
+    max-width: 940px;
+  } */
+  img.logo_brand {
+    max-width: 116px;
+  }
+}
+@media screen and (max-width: 991px) {
+  :root {
+    font-size: 7px;
+  }
+}
+@media screen and (max-width: 540px) {
+  :root {
+    font-size: 4px;
+  }
+}
