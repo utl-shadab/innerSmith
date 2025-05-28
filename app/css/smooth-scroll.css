@@ -1,0 +1,56 @@
+/* Smooth Scroll Styles */
+.smooth-scroll-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+section.full-section {
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  visibility: hidden;
+}
+
+.outer-wrapper,
+.inner-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.section-bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.section-heading {
+  z-index: 2;
+  font-size: clamp(1rem, 5vw, 5rem);
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.5em;
+  margin-right: -0.5em;
+  color: #fff;
+  width: 90vw;
+  max-width: 1200px;
+}
+
+.clip-text {
+  overflow: hidden;
+}
+
+/* Ensure all elements that will be animated have will-change property */
+.section-heading *,
+.section-bg,
+.outer-wrapper,
+.inner-wrapper {
+  will-change: transform, opacity;
+}

@@ -94,8 +94,8 @@
 }
 
 .slider1 .circle-slide {
-  width: 60vh; /* full width */
-  height: 60vh;
+  width: 55vh; /* Reduced from 60vh */
+  height: 55vh; /* Reduced from 60vh */
   padding: 0 2% 0 10%;
   background-color: #cdcdcd;
   border-radius: 50%;
@@ -214,16 +214,16 @@
 }
 
 .slider1 .swiper-slide {
-  height: 70vh !important;
-  width: 60vh !important;
+  height: 65vh !important; /* Reduced from 70vh */
+  width: 55vh !important; /* Reduced from 60vh */
 }
 .slider2 .swiper-slide {
-  height: 70vh !important;
-  width: 60vh !important;
+  height: 65vh !important; /* Reduced from 70vh */
+  width: 55vh !important; /* Reduced from 60vh */
 }
 .slider3 .swiper-slide {
-  height: 70vh !important;
-  width: 60vh !important;
+  height: 65vh !important; /* Reduced from 70vh */
+  width: 55vh !important; /* Reduced from 60vh */
 }
 
 .affectedSlider .swiper-pagination-fraction,
@@ -313,7 +313,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%; 
+  height: 100%;
   transform-style: preserve-3d;
   backface-visibility: hidden;
   background: transparent;

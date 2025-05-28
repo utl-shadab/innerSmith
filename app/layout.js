@@ -2,20 +2,16 @@ import { Albert_Sans } from "next/font/google";
 import "./globals.css";
 import "./css/main.css";
 import "./css/responsive.css";
+import "./css/smooth-scroll.css";
 import MusicComp from "./Home/musicComp";
 import SmoothScrolliing from "./components/smoothScrolling";
 
 const albertSans = Albert_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // add weights you need
-  variable: "--font-albert-sans", // optional, for CSS variables
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-albert-sans",
   display: "swap",
 });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata = {
   title: "Innersmith",
@@ -29,18 +25,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${albertSans.variable}  antialiased`}>
-        {/* <audio
-          autoPlay
-          loop
-          controls={false}
-          style={{ display: "none" }}
-          src="/musicbg.mp3"
-        /> */}
+      <body
+        className={`${albertSans.variable} antialiased`}
+        suppressHydrationWarning={true}
+      >
         <MusicComp src="/musicbg.mp3" autoPlay={false} />
-        <SmoothScrolliing>
-        {children}
-        </SmoothScrolliing>
+        <SmoothScrolliing>{children}</SmoothScrolliing>
       </body>
     </html>
   );

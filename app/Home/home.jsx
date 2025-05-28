@@ -401,34 +401,34 @@ const Home = () => {
 
   return (
     <section
-      className="heroSection relative h-[200vh] top-0  pb-[40vh] max-lg:px-[15px] "
+      className="heroSection relative h-[180vh] top-0 pb-[30vh] max-lg:px-[15px]"
       ref={heroRef}
     >
-      <div className=" inline !absolute top-[7.6rem] left-[12rem] ">
+      <div className="inline !absolute top-[7rem] left-[10rem]">
         <Image
           src="/mainLogomini.svg"
-          height="74"
-          width="74"
+          height="60"
+          width="60"
           alt="logo"
-          className="h-auto w-[9rem] max-sm:-translate-x-1/2"
+          className="h-auto w-[7rem] max-sm:-translate-x-1/2"
         />
       </div>
       <div
-        className="herocontent text-white pt-[20vh]   z-[7] top-[0] flex flex-col gap-2 items-center bg-transparent left-0 right-0 text-center  max-sm:px-[15px]"
+        className="herocontent text-white pt-[18vh] z-[7] top-[0] flex flex-col gap-2 items-center bg-transparent left-0 right-0 text-center max-sm:px-[15px]"
         ref={herocontentref}
       >
         <div className="relative px-[10px]">
-          <div className="flex flex-col gap-[2.8rem]">
-            <h3 className="text-[4rem] font-[400] heroline leading-[1.5] ">
+          <div className="flex flex-col gap-[2rem]">
+            <h3 className="text-[3.5rem] font-[400] heroline leading-[1.5]">
               Stress is a loop that keeps you stuck.
             </h3>
             <h1
-              className="text-[12.8rem] font-[400] text-white leading-[1] max-sm:text-[10rem]"
+              className="text-[10rem] font-[400] text-white leading-[1] max-sm:text-[8rem]"
               ref={headingRef}
             >
               InnerSmith
             </h1>
-            <h3 className="text-[4rem] herosupportline font-[400] leading-[1.5]">
+            <h3 className="text-[3.5rem] herosupportline font-[400] leading-[1.5]">
               helps you break free and{" "}
               <span className="italic max-sm:block font-[600]">
                 Feel Better, Live Better
@@ -463,15 +463,15 @@ const Home = () => {
                 />
               </g>
             </svg>
-            <h4 className="text-[2rem] font-[400] leading-[1.5]">
+            <h4 className="text-[1.8rem] font-[400] leading-[1.5]">
               SCROLL TO CONTINUE
             </h4>
           </div>
         </div>
       </div>
 
-      <div className="about-content text-[#fff]  mt-[90vh] bottom-[25%] left-0 right-0 flex flex-col items-center">
-        <h3 className="about-content1 text-[5.6rem] font-[400] text-center">
+      <div className="about-content text-[#fff] mt-[80vh] bottom-[25%] left-0 right-0 flex flex-col items-center">
+        <h3 className="about-content1 text-[4.8rem] font-[400] text-center">
           Say hello to the{" "}
           <span className="font-[700]">
             world’s first holistic wellness app{" "}

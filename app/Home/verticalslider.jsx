@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { EffectCreative, Pagination, Autoplay } from "swiper/modules";
+import {gsap} from 'gsap';
 
 const affectedDataSlide = [
   { title: "970M", text: "globally experience a mental disorder." },
@@ -28,6 +29,7 @@ const Verticalslider = () => {
           autoAlpha: 0,
           y: 100,
           duration: 0.8,
+          scrollTrigger: true,
           ease: "power3.out",
         });
       }
