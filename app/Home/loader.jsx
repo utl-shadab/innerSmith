@@ -42,14 +42,14 @@ export default function Loader() {
       tl.to(topPanelRef.current, {
         y: "-150%",
         duration: 0.8,
-        ease: "power2.inOut",
+        ease: "power4.inOut",
       });
       tl.to(
         bottomPanelRef.current,
         {
           y: "150%",
           duration: 0.8,
-          ease: "power2.inOut",
+          ease: "power4.inOut",
         },
         "<"
       ); // run together
@@ -62,14 +62,14 @@ export default function Loader() {
     tl.to(topPanelRef.current, {
       y: "0",
       duration: 0.8,
-      ease: "power2.inOut",
+      ease: "power4.inOut",
     });
     tl.to(
       bottomPanelRef.current,
       {
         y: "0",
         duration: 0.8,
-        ease: "power2.inOut",
+        ease: "power4.inOut",
       },
       "<"
     );

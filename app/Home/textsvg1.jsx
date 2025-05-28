@@ -130,45 +130,74 @@ const Textsvg1 = () => {
       className="h-screen bg-white  flex relative justify-start items-center overflow-hidden"
       ref={textsvg1containerRef}
     >
-      <div className="grid grid-cols-2 mx-[15rem] max-lg:grid-cols-1 max-lg:mx-[15px]">
-        <div className=" mr-auto flex flex-col justify-around ">
-          <div className="flex flex-col justify-around gap-[2rem] items-start max-lg:items-center max-lg:mb-10">
-            <h2 className="text-[#6AA7BB] font-semibold capitalise text-[3.6rem] mb-4 max-lg:text-center textsvg1-content1">
-              Let’s Disrupt The Spiral
-            </h2>
-            <p className="text-[5.8rem]  text-left text-[#515151] font-[300] max-sm:text-center  leading-[1.2]">
-              <span className="font-[400]  text-black textsvg1-content2">
-                What if support showed up the moment the tension set in?
-              </span>{" "}
-              What if something helped you feel better in minutes?
-            </p>
-          </div>
+      <div className=" hidden md:grid grid-cols-2 mx-[15rem]   max-sm:h-full max-sm:py-[5rem]">
+        <div className="flex flex-col justify-center gap-[2rem] pr-[4rem] items-start max-sm:items-center max-sm:mb-10">
+          <h2 className="text-[#525299] font-semibold  text-[3.6rem]  textsvg2-content1">
+          Let’s Disrupt The Spiral
+          </h2>
+          <p className="text-[5.8rem] text-left text-[#515151] font-[300] max-sm:text-center  leading-[1.25]">
+            <span className="font-[400] text-black textsvg2-content2">
+            What if support showed up the moment the tension set in?
+            </span>{" "}
+            What if something helped you feel better in minutes?
+          </p>
         </div>
-        <div className="flex justify-center items-center max-lg:mt-12">
+
+        <div className="">
           {/* <Image
-            src={walksvg}
-            height="441"
-            width="250"
+            src={laptopsvg}
+            height="402"
+            width="603"
             alt=""
-            className=" w-[30rem] h-auto "
-          />
-           */}
+            className=" w-[90rem] h-auto "
+          /> */}
           <video
             muted
             autoPlay
             loop
             playsInline
             preload="auto"
-            className="top-0 left-0 w-auto h-[38%] block object-cover max-sm:object-centre max-lg:w-[40%] max-lg:h-full"
+            className="  h-[500px]  w-full block object-contain max-sm:object-centre  max-sm:py-[5rem] max-sm:px-[1rem]  "
           >
             <source
-              src="https://thescaleagency.s3.amazonaws.com/Innersmith/weight_animation.mp4"
+               src="https://thescaleagency.s3.amazonaws.com/Innersmith/weight_animation.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
+      <div className="md:hidden w-full h-full flex flex-col justify-center items-center px-6 py-12">
+        <div className="w-full  flex flex-col items-center text-center gap-8">
+          <h2 className="text-[#525299] font-semibold text-6xl textsvg2-content1 leading-tight">
+          Let’s Disrupt The Spiral
+          </h2>
+          
+          <p className="text-7xl text-center text-[#8a8a8a] font-light leading-relaxed">
+            <span className="font-medium text-black textsvg2-content2">
+            What if support showed up the moment the tension set in?
+            </span>{" "}
+            What if something helped you feel better in minutes?
+          </p>
+          
+          <div className="w-full  mt-4">
+          <video
+            muted
+            autoPlay
+            loop
+            playsInline
+            preload="auto"
+            className="  h-[700px]  w-full block object-contain max-sm:object-centre  max-sm:py-[5rem] max-sm:px-[1rem] "
+          >
+            <source
+                src="https://thescaleagency.s3.amazonaws.com/Innersmith/weight_animation.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+          </div>
+        </div>
+      </div>  
     </section>
   );
 };

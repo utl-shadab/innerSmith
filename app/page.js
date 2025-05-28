@@ -16,6 +16,7 @@ export default function Page() {
       {!isClient && <Loading />}
 
       <div style={{ display: isClient ? "block" : "none" }}>
+        
         <Homepage />
       </div>
     </>
