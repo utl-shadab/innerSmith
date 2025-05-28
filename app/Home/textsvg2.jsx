@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from "react";
 import laptopsvg from "@/public/svgs/menlaptop.svg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LaptopLottie from "./LaptopLottie";
 import SplitType from "split-type";
 gsap.registerPlugin(ScrollTrigger);
 const Textsvg2 = () => {
@@ -73,7 +74,7 @@ const Textsvg2 = () => {
       className="h-screen bg-white w-full  flex relative justify-start max-sm:py-[3rem] items-center overflow-hidden"
       ref={textsvg2containerRef}
     >
-      <div className=" hidden md:grid grid-cols-2 mx-[15rem]   max-sm:h-full max-sm:py-[5rem]">
+      <div className=" hidden md:grid grid-cols-2 mx-[15rem]    max-sm:h-full max-sm:py-[5rem]">
         <div className="flex flex-col justify-center gap-[2rem] pr-[4rem] items-start max-sm:items-center max-sm:mb-10">
           <h2 className="text-[#525299] font-semibold  text-[3.6rem]  textsvg2-content1">
             The Problem
@@ -95,20 +96,8 @@ const Textsvg2 = () => {
             alt=""
             className=" w-[90rem] h-auto "
           /> */}
-          <video
-            muted
-            autoPlay
-            loop
-            playsInline
-            preload="auto"
-            className="  h-full w-full block object-cover max-sm:object-centre "
-          >
-            <source
-              src="https://thescaleagency.s3.amazonaws.com/Innersmith/laptop_animation.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
+       
+          <LaptopLottie />
         </div>
       </div>
       <div className="md:hidden w-full h-full flex flex-col justify-center items-center px-6 py-12">
@@ -125,23 +114,10 @@ const Textsvg2 = () => {
           </p>
           
           <div className="w-full  mt-4">
-          <video
-            muted
-            autoPlay
-            loop
-            playsInline
-            preload="auto"
-            className="  h-full w-full block object-cover max-sm:object-centre "
-          >
-            <source
-              src="https://thescaleagency.s3.amazonaws.com/Innersmith/laptop_animation.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
+          <LaptopLottie />
           </div>
         </div>
-      </div>
+      </div>  
     </section>
   );
 };

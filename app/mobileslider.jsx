@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { gsap } from "gsap";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, EffectFade } from "swiper/modules";
 
 const ImageData = [
   {
@@ -17,7 +19,7 @@ const ImageData = [
   },
   {
     title: "Feel Supported",
-    content: "A community that reminds you that you’re never in this alone.",
+    content: "A community that reminds you that you're never in this alone.",
     imgLInk: "/svgs/mobileSlider/feelSupport.svg",
   },
   {
@@ -35,7 +37,7 @@ const ImageData = [
   {
     title: "Heal Creatively",
     content:
-      "Art-based therapy, music, movement, and other expressive outlets for when words aren’t enough.",
+      "Art-based therapy, music, movement, and other expressive outlets for when words aren't enough.",
     imgLInk: "/svgs/mobileSlider/Heal.svg",
   },
   {
@@ -45,71 +47,204 @@ const ImageData = [
     imgLInk: "/svgs/mobileSlider/LetitOut.svg",
   },
 ];
+
 const Mobileslider = () => {
   const swiperRef = useRef(null);
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
+  const headerRef = useRef(null);
+  const frameRef = useRef(null);
+  const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Initialize GSAP animations on mount
+  useEffect(() => {
+    const tl = gsap.timeline();
+    
+    // Initial load animation
+    tl.fromTo(headerRef.current, 
+      { opacity: 0, y: -50 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+    )
+    .fromTo(titleRef.current,
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.4"
+    )
+    .fromTo(contentRef.current,
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.6"
+    )
+    .fromTo(frameRef.current,
+      { opacity: 0, scale: 0.8, rotation: 5 },
+      { opacity: 1, scale: 1, rotation: 0, duration: 1, ease: "back.out(1.7)" },
+      "-=0.4"
+    );
+
+    // Floating animation for phone frame
+    gsap.to(frameRef.current, {
+      y: -10,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut"
+    });
+
+  }, []);
+
+  // Animate text changes
+  const animateTextChange = (newIndex) => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setActiveIndex(newIndex);
+        setIsAnimating(false);
+      }
+    });
+
+    // Animate out current text
+    tl.to([titleRef.current, contentRef.current], {
+      opacity: 0,
+      x: -50,
+      duration: 0.3,
+      ease: "power2.in",
+      stagger: 0.1
+    })
+    // Animate in new text
+    .set([titleRef.current, contentRef.current], { x: 50 })
+    .to([titleRef.current, contentRef.current], {
+      opacity: 1,
+      x: 0,
+      duration: 0.4,
+      ease: "power2.out",
+      stagger: 0.1
+    });
+  };
+
+  // Handle slide change with smooth transition
+  const handleSlideChange = (swiper) => {
+    const newIndex = swiper.realIndex;
+    if (newIndex !== activeIndex) {
+      animateTextChange(newIndex);
+    }
+  };
 
   return (
-    <section className="mobileSlider h-screen bg-white relative overflow-hidden py-32 max-md:py-4">
-      <div className="mobileSlider-content grid grid-cols-[60%_40%] h-full px-[7rem] max-sm:grid-cols-1 max-sm:px-[2rem] max-sm:gap-[2rem] max-sm:pt-[2rem]  ">
-        <div className="mobileSlider-text flex  items-center flex-col justify-center text-left h-full px-[7rem]  ">
-          <h2 className="text-[#7BB338] text-[3.6rem]  self-start max-sm:text-[5rem]">
+    <section 
+      ref={containerRef}
+      className="mobileSlider min-h-screen bg-gradient-to-br from-white to-gray-50 relative overflow-hidden py-8 lg:py-16"
+    >
+      <div className="mobileSlider-content grid grid-cols-1 lg:grid-cols-[55%_45%] xl:grid-cols-[60%_40%] h-full gap-8 lg:gap-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24">
+        
+        {/* Text Content */}
+        <div className="mobileSlider-text flex items-center flex-col justify-center text-left h-full order-2 lg:order-1 px-0 sm:px-4 lg:px-8 xl:px-12">
+          <h2 
+            ref={headerRef}
+            className="text-[#7BB338] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold self-start mb-4 lg:mb-6 tracking-wide"
+          >
             INSIDE THE APP
           </h2>
-          <p className="text-black text-[6.4rem] font-[300] max-md:text-[3rem] max-sm:text-[3rem]">
-            <span className="font-[400] text-black">
-              {" "}
+          
+          <div className="text-content w-full">
+            <p 
+              ref={titleRef}
+              className="text-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-semibold mb-3 lg:mb-4 leading-tight"
+            >
               {ImageData[activeIndex].title}
-            </span>
-            <br />
-            {ImageData[activeIndex].content}
-          </p>
+            </p>
+            
+            <p 
+              ref={contentRef}
+              className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-light leading-relaxed max-w-3xl"
+            >
+              {ImageData[activeIndex].content}
+            </p>
+          </div>
         </div>
-        <div className="slider pt-[5rem]  relative max-sm:pt-[3rem]">
-          <div className="relative  flex justify-center items-center h-auto ">
+
+        {/* Slider Content */}
+        <div className="slider flex items-center justify-center relative order-1 lg:order-2 py-8 lg:py-12">
+          <div 
+            ref={frameRef}
+            className="relative flex justify-center items-center h-auto w-full max-w-sm lg:max-w-md xl:max-w-lg"
+          >
+            {/* Phone Frame */}
             <Image
               src="/svgs/mobileScreen.svg"
-              alt=""
+              alt="Phone Frame"
               height="686"
               width="329"
-              className=" absolute top-[0] mobilebgframe  left-[24%] w-[46%]  z-[3] max-sm:!left-[24%] "
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-auto z-10 max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px] xl:max-w-[450px]"
+              priority
             />
-            <div className="overflow-hidden w-1/2 mobileframeslider max-sm:!w-1/2">
+            
+            {/* Slider Container */}
+            <div className="overflow-hidden relative w-[85%] max-w-[240px] sm:max-w-[270px] md:max-w-[310px] lg:max-w-[340px] xl:max-w-[380px] aspect-[310/672] mx-auto">
               <Swiper
-                modules={[Autoplay, Navigation]}
-                slidesPerView="1"
+                modules={[Autoplay, Navigation, EffectFade]}
+                slidesPerView={1}
                 spaceBetween={0}
                 navigation={false}
                 centeredSlides={true}
+                effect="fade"
+                fadeEffect={{
+                  crossFade: true
+                }}
+                speed={800}
                 autoplay={{
-                  delay: 2500,
+                  delay: 3500,
                   disableOnInteraction: false,
+                  pauseOnMouseEnter: true
                 }}
                 onSwiper={(swiper) => {
                   swiperRef.current = swiper;
-                  console.log("Swiper initialized:", swiper);
                 }}
-                onSlideChange={(swiper) => {
-                  setActiveIndex(swiper.realIndex); // ✅ Update on slide change
-                }}
+                onSlideChange={handleSlideChange}
                 loop={true}
+                className="h-full w-full rounded-3xl overflow-hidden"
               >
                 {ImageData.map((image, index) => (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide key={index} className="flex items-center justify-center">
                     <Image
                       src={image.imgLInk}
                       alt={image.title}
                       height="672"
                       width="310"
-                      className="w-max h-max max-sm:!w-[88%]"
+                      className="w-full h-full object-cover object-center"
+                      priority={index === 0}
                     />
                   </SwiperSlide>
-                ))}{" "}
+                ))}
               </Swiper>
-              {/* */}
             </div>
           </div>
+
+          {/* Progress Indicators */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+            {ImageData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => swiperRef.current?.slideToLoop(index)}
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                  index === activeIndex 
+                    ? 'bg-[#7BB338] scale-125' 
+                    : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* Background Decorations */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-10 right-10 w-32 h-32 bg-[#7BB338] opacity-5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-40 h-40 bg-blue-300 opacity-5 rounded-full blur-3xl"></div>
       </div>
     </section>
   );
