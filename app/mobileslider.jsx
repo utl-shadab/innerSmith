@@ -60,45 +60,84 @@ const Mobileslider = () => {
 
   // Initialize GSAP animations on mount
   useEffect(() => {
+    // Check if mobile
+    const isMobile = window.innerWidth < 768;
+    
     const tl = gsap.timeline();
     
-    // Initial load animation
-    tl.fromTo(headerRef.current, 
-      { opacity: 0, y: -50 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-    )
-    .fromTo(titleRef.current,
-      { opacity: 0, x: -100 },
-      { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
-      "-=0.4"
-    )
-    .fromTo(contentRef.current,
-      { opacity: 0, x: -100 },
-      { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
-      "-=0.6"
-    )
-    .fromTo(frameRef.current,
-      { opacity: 0, scale: 0.8, rotation: 5 },
-      { opacity: 1, scale: 1, rotation: 0, duration: 1, ease: "back.out(1.7)" },
-      "-=0.4"
-    );
+    // Use simpler animations on mobile
+    if (isMobile) {
+      // Initial load animation - simplified for mobile
+      tl.fromTo(headerRef.current, 
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power1.out" }
+      )
+      .fromTo(titleRef.current,
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.5, ease: "power1.out" },
+        "-=0.3"
+      )
+      .fromTo(contentRef.current,
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.5, ease: "power1.out" },
+        "-=0.3"
+      )
+      .fromTo(frameRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: "power1.out" },
+        "-=0.3"
+      );
 
-    // Floating animation for phone frame
-    gsap.to(frameRef.current, {
-      y: -10,
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: "power2.inOut"
-    });
+      // Simpler floating animation for mobile
+      gsap.to(frameRef.current, {
+        y: -5,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    } else {
+      // Desktop animations - keep original
+      tl.fromTo(headerRef.current, 
+        { opacity: 0, y: -50 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+      )
+      .fromTo(titleRef.current,
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+        "-=0.4"
+      )
+      .fromTo(contentRef.current,
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+        "-=0.6"
+      )
+      .fromTo(frameRef.current,
+        { opacity: 0, scale: 0.8, rotation: 5 },
+        { opacity: 1, scale: 1, rotation: 0, duration: 1, ease: "back.out(1.7)" },
+        "-=0.4"
+      );
 
+      // Floating animation for phone frame
+      gsap.to(frameRef.current, {
+        y: -10,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power2.inOut"
+      });
+    }
   }, []);
 
-  // Animate text changes
+  // Animate text changes - optimized for mobile
   const animateTextChange = (newIndex) => {
     if (isAnimating) return;
     
     setIsAnimating(true);
+    
+    // Check if mobile
+    const isMobile = window.innerWidth < 768;
+    
     const tl = gsap.timeline({
       onComplete: () => {
         setActiveIndex(newIndex);
@@ -106,23 +145,43 @@ const Mobileslider = () => {
       }
     });
 
-    // Animate out current text
-    tl.to([titleRef.current, contentRef.current], {
-      opacity: 0,
-      x: -50,
-      duration: 0.3,
-      ease: "power2.in",
-      stagger: 0.1
-    })
-    // Animate in new text
-    .set([titleRef.current, contentRef.current], { x: 50 })
-    .to([titleRef.current, contentRef.current], {
-      opacity: 1,
-      x: 0,
-      duration: 0.4,
-      ease: "power2.out",
-      stagger: 0.1
-    });
+    if (isMobile) {
+      // Simpler animation for mobile
+      tl.to([titleRef.current, contentRef.current], {
+        opacity: 0,
+        x: -20,
+        duration: 0.2,
+        ease: "power1.in",
+        stagger: 0.05
+      })
+      // Animate in new text
+      .set([titleRef.current, contentRef.current], { x: 20 })
+      .to([titleRef.current, contentRef.current], {
+        opacity: 1,
+        x: 0,
+        duration: 0.3,
+        ease: "power1.out",
+        stagger: 0.05
+      });
+    } else {
+      // Desktop animation - keep original
+      tl.to([titleRef.current, contentRef.current], {
+        opacity: 0,
+        x: -50,
+        duration: 0.3,
+        ease: "power2.in",
+        stagger: 0.1
+      })
+      // Animate in new text
+      .set([titleRef.current, contentRef.current], { x: 50 })
+      .to([titleRef.current, contentRef.current], {
+        opacity: 1,
+        x: 0,
+        duration: 0.4,
+        ease: "power2.out",
+        stagger: 0.1
+      });
+    }
   };
 
   // Handle slide change with smooth transition
@@ -190,13 +249,13 @@ const Mobileslider = () => {
                 spaceBetween={0}
                 navigation={false}
                 centeredSlides={true}
-                effect="fade"
+                effect={window.innerWidth < 768 ? "slide" : "fade"} // Use simpler slide effect on mobile
                 fadeEffect={{
                   crossFade: true
                 }}
-                speed={800}
+                speed={window.innerWidth < 768 ? 500 : 800} // Faster transitions on mobile
                 autoplay={{
-                  delay: 3500,
+                  delay: window.innerWidth < 768 ? 4000 : 3500, // Longer delay on mobile
                   disableOnInteraction: false,
                   pauseOnMouseEnter: true
                 }}
@@ -205,6 +264,10 @@ const Mobileslider = () => {
                 }}
                 onSlideChange={handleSlideChange}
                 loop={true}
+                preloadImages={false} // Don't preload all images at once
+                lazy={true} // Use lazy loading for images
+                updateOnWindowResize={true}
+                resizeObserver={true}
                 className="h-full w-full rounded-3xl overflow-hidden"
               >
                 {ImageData.map((image, index) => (
@@ -216,6 +279,7 @@ const Mobileslider = () => {
                       width="310"
                       className="w-full h-full object-cover object-center"
                       priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"} // Only prioritize first image
                     />
                   </SwiperSlide>
                 ))}
