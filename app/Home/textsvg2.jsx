@@ -71,10 +71,10 @@ const Textsvg2 = () => {
   }, []);
   return (
     <section
-      className="h-screen bg-white w-full  flex relative justify-start max-sm:py-[3rem] items-center overflow-hidden"
+      className="h-screen bg-white w-full second-main-section flex relative justify-start max-sm:py-[3rem] items-center overflow-hidden"
       ref={textsvg2containerRef}
     >
-      <div className=" hidden md:grid grid-cols-2 mx-[15rem]    max-sm:h-full max-sm:py-[5rem]">
+      <div className=" hidden md:grid grid-cols-2 mx-[15rem] second-section   max-sm:h-full max-sm:py-[5rem]">
         <div className="flex flex-col justify-center gap-[2rem] pr-[4rem] items-start max-sm:items-center max-sm:mb-10">
           <h2 className="text-[#525299] font-semibold  text-[3.6rem]  textsvg2-content1">
             The Problem

@@ -135,22 +135,22 @@ const TextImage3 = () => {
 
   return (
     <section
-      className="h-screen bg-white flex relative justify-center items-center w-screen overflow-hidden"
+      className="h-screen fifth-section bg-white flex relative justify-center items-center w-screen overflow-hidden"
       ref={textimage3containerRef}
     >
       <div className="grid grid-cols-2 mx-[15rem] max-lg:grid-cols-1 max-lg:mx-[15px]">
         <div className="flex flex-col justify-center  max-sm:max-w-full max-sm:ml-0 max-lg:px-[10px]  max-lg:pb-[20rem] pr-16">
-          <h2 className="text-[#FE8A65] font-semibold  text-[3.6rem] mb-2 textImage3-content1 max-sm:text-center max-lg:text-[4rem] max-sm:mb-6">
+          <h2 className="text-[#FE8A65] font-semibold  text-[3.6rem] mb-2 textImage3-content1 max-sm:text-center  ">
             Feel More Like Yourself With InnerSmith
           </h2>
-          <p className="text-[5.8rem] text-left text-[#515151] font-[300] max-sm:text-center mt-7  leading-[1.25]">
+          <p className="text-[5.8rem] text-left text-[#515151] font-[300] max-sm:text-center mt-7 fifth-p leading-[1.25]">
             <span className="font-[400] text-black textImage3-content2">
               InnerSmith guides you through quick, calming activities
             </span>{" "}
             that help you show up for your work, your people, and yourself.
           </p>
         </div>
-        <div className="bg-white relative max-lg:text-center flex justify-center">
+        <div className="bg-white relative max-lg:text-center flex justify-center fifth-img">
           <Image
             src={logoAnimated}
             height="401"

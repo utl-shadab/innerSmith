@@ -419,11 +419,11 @@ const Home = () => {
       >
         <div className="relative px-[10px]">
           <div className="flex flex-col gap-[2.8rem]">
-            <h3 className="text-[4rem] font-[400] heroline leading-[1.5] ">
+            <h3 className="text-[4rem] tablet font-[400] heroline leading-[1.5] ">
               Stress is a loop that keeps you stuck.
             </h3>
             <h1
-              className="text-[12.8rem] font-[400] text-white leading-[1] max-sm:text-[10rem]"
+              className="text-[12.8rem] font-[400] mobile-and-tablet text-white leading-[1] max-sm:text-[10rem]"
               ref={headingRef}
             >
               InnerSmith
@@ -440,10 +440,10 @@ const Home = () => {
               width="41"
               height="41"
               viewBox="0 0 41 41"
-              className="animate-bounce"
+              className="animate-bounce w-[41px] h-[41px] md:w-[13vw] md:h-[13vw]"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ height: "4.1rem", width: "4.1rem" }}
+
             >
               <mask
                 id="mask0_161_3215"
@@ -471,7 +471,7 @@ const Home = () => {
       </div>
 
       <div className="about-content text-[#fff]  mt-[90vh] bottom-[25%] left-0 right-0 flex flex-col items-center">
-        <h3 className="about-content1 text-[5.6rem] font-[400] text-center">
+        <h3 className="about-content1 text-[5.6rem]  font-[400] text-center">
           Say hello to the{" "}
           <span className="font-[700]">
             world’s first holistic wellness app{" "}

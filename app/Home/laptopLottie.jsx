@@ -4,10 +4,8 @@ import Lottie from "lottie-react";
 import laptopAnimation from "../../public/manlappy.json"; 
 
 const laptopLottie = () => {
-  return (
-    <div className="w-full max-w-[500px] mx-auto">
+  return (   
       <Lottie animationData={laptopAnimation} loop={true} autoplay={true} />
-    </div>
   );
 };
 

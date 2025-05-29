@@ -69,73 +69,18 @@ const Textsvg1 = () => {
       triggerRef1.current?.kill();
     };
   }, []);
-  //   const paragraph1 = new SplitType(".textsvg1-content1", {
-  //     types: "words, chars",
-  //   });
-  //   const paragraph2 = new SplitType(".textsvg1-content2", {
-  //     types: "words, chars",
-  //   });
-
-  //   // Prevent words from breaking across lines
-  //   document
-  //     .querySelectorAll(".textsvg1-content1 .word, .textsvg1-content2 .word")
-  //     .forEach((el) => {
-  //       el.style.whiteSpace = "nowrap";
-  //     });
-
-  //   // Timeline for animation
-  //   const ptl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: textsvg1containerRef.current,
-  //       start: "top-=100% center",
-  //       end: "+=600",
-  //       toggleActions: "play none none none",
-  //       markers: true,
-  //     },
-  //     defaults: { ease: "power2.out" },
-  //   });
-
-  //   ptl
-  //     .fromTo(
-  //       ".textsvg1-content1 .char",
-  //       { color: "#000" },
-  //       {
-  //         color: "#D17700",
-  //         y: 0,
-  //         stagger: 0.03,
-  //         duration: 1,
-  //       }
-  //     )
-  //     .fromTo(
-  //       ".textsvg1-content2 .char",
-  //       { color: "#000" },
-  //       {
-  //         color: "#D17700",
-  //         y: 0,
-  //         stagger: 0.03,
-  //         duration: 1,
-  //       },
-  //       "-=0.8" // slight overlap
-  //     );
-
-  //   // Clean up
-  //   return () => {
-  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  //     ptl.kill();
-  //   };
-  // }, []);
-
+  
   return (
     <section
       className="h-screen bg-white  flex relative justify-start items-center overflow-hidden"
       ref={textsvg1containerRef}
     >
-      <div className=" hidden md:grid grid-cols-2 mx-[15rem]   max-sm:h-full max-sm:py-[5rem]">
+      <div className=" fourth-section hidden md:grid grid-cols-2 mx-[15rem]   max-sm:h-full max-sm:py-[5rem]">
         <div className="flex flex-col justify-center gap-[2rem] pr-[4rem] items-start max-sm:items-center max-sm:mb-10">
-          <h2 className="text-[#525299] font-semibold  text-[3.6rem]  textsvg2-content1">
+          <h2 className="text-[#525299]  font-semibold  text-[3.6rem]  textsvg2-content1">
           Let’s Disrupt The Spiral
           </h2>
-          <p className="text-[5.8rem] text-left text-[#515151] font-[300] max-sm:text-center  leading-[1.25]">
+          <p className="text-[5.8rem] fourth-sec-text text-left text-[#515151] font-[300] max-sm:text-center  leading-[1.25]">
             <span className="font-[400] text-black textsvg2-content2">
             What if support showed up the moment the tension set in?
             </span>{" "}

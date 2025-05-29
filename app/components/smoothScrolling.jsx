@@ -7,8 +7,8 @@ function SmoothScrolliing({children}) {
     duration: 2,
     syncTouch: false,
     smooth: true,
-      smoothTouch: true,
-      easing: (t) => 1 - Math.pow(1 - t, 4),
+    smoothTouch: true,
+    easing: (t) => 1 - Math.pow(1 - t, 4),
   }
   return (
     <ReactLenis 
