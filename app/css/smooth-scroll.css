@@ -47,6 +47,37 @@ section.full-section {
   overflow: hidden;
 }
 
+/* Mobile-specific optimizations */
+@media (max-width: 767px) {
+  /* Reduce animation complexity */
+  .char,
+  .word {
+    display: inline !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    will-change: auto !important;
+  }
+
+  /* Optimize rendering */
+  .section-bg,
+  .outer-wrapper,
+  .inner-wrapper {
+    will-change: auto;
+    transform: translateZ(0);
+  }
+
+  /* Reduce parallax effects */
+  [data-speed] {
+    transform: none !important;
+  }
+
+  /* Ensure smooth scrolling container doesn't cause overflow */
+  .smooth-scroll-container {
+    overflow: visible;
+  }
+}
+
 /* Ensure all elements that will be animated have will-change property */
 .section-heading *,
 .section-bg,

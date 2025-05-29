@@ -30,7 +30,7 @@ const Homepage = () => {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden"; // Scroll to top after video
+    document.body.style.overflow = "hidden";
     window.scrollTo(0, 0);
 
     setTimeout(() => {

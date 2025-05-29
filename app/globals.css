@@ -9,6 +9,7 @@ body {
 }
 :root {
   font-size: 10px;
+  --mobile-animations: 0;
 }
 
 h1,
@@ -46,6 +47,39 @@ button:hover {
   display: inline-block;
 }
 
+/* Mobile optimization classes */
+.mobile-device .gsap-marker-scroller-start,
+.mobile-device .gsap-marker-scroller-end,
+.mobile-device .gsap-marker-start,
+.mobile-device .gsap-marker-end {
+  display: none !important;
+}
+
+/* Optimize rendering on mobile */
+.mobile-device .char,
+.mobile-device .word {
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Reduce animation complexity on mobile */
+@media (max-width: 767px) {
+  /* Force hardware acceleration for smoother scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+    transform: translateZ(0);
+  }
+
+  /* Simplify animations */
+  .gsap-marker-scroller-start,
+  .gsap-marker-scroller-end,
+  .gsap-marker-start,
+  .gsap-marker-end {
+    display: none !important;
+  }
+}
+
 @media screen and (min-width: 1401px) {
   :root {
     font-size: 9px; /* Reduced from 10px */
@@ -60,25 +94,16 @@ button:hover {
   :root {
     font-size: 7.5px; /* Reduced from 8px */
   }
-  /* .container {
-    max-width: 1150px;
-  } */
 }
 @media screen and (max-width: 1199px) {
   :root {
     font-size: 7.5px; /* Reduced from 8px */
   }
-  /* .container {
-    max-width: 1020px;
-  } */
 }
 @media screen and (max-width: 1024px) {
   :root {
     font-size: 6.5px; /* Reduced from 7px */
   }
-  /* .container {
-    max-width: 940px;
-  } */
   img.logo_brand {
     max-width: 110px;
   }

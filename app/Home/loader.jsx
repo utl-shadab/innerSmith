@@ -20,73 +20,128 @@ export default function Loader() {
   const [isClient, setIsClient] = useState(false);
   const loaderContainerRef = useRef(null);
 
+  // useEffect(() => {
+  //   // Mark the client-side rendering as completed
+  //   setIsClient(true);
+
+  //   const tl = gsap.timeline({
+  //     onComplete: () => {
+  //       // Animation is complete, you can add any callback here if needed
+  //       console.log("Loader animation complete");
+  //     }
+  //   });
+
+  //   // Initial setup
+  //   gsap.set(topPanelRef.current, { y: "-150%" });
+  //   gsap.set(bottomPanelRef.current, { y: "150%" });
+
+  //   // Animation sequence
+  //   for (let i = 0; i < images.length; i++) {
+  //     // Shutter in
+  //     tl.to([topPanelRef.current, bottomPanelRef.current], {
+  //       y: 0,
+  //       duration: 0.8,
+  //       ease: "power2.inOut",
+  //     });
+
+  //     // Set new image/text
+  //     tl.add(() => {
+  //       setIndex(i);
+  //     });
+
+  //     // Shutter out
+  //     tl.to(topPanelRef.current, {
+  //       y: "-150%",
+  //       duration: 0.8,
+  //       ease: "power4.inOut",
+  //     });
+  //     tl.to(
+  //       bottomPanelRef.current,
+  //       {
+  //         y: "150%",
+  //         duration: 0.8,
+  //         ease: "power4.inOut",
+  //       },
+  //       "<"
+  //     ); // run together
+
+  //     // Optional pause before next
+  //     tl.to({}, { duration: 0.5 });
+  //   }
+
+  //   // Final shutter open at end
+  //   tl.to(topPanelRef.current, {
+  //     y: "0",
+  //     duration: 0.8,
+  //     ease: "power4.inOut",
+  //   });
+  //   tl.to(
+  //     bottomPanelRef.current,
+  //     {
+  //       y: "0",
+  //       duration: 0.8,
+  //       ease: "power4.inOut",
+  //     },
+  //     "<"
+  //   );
+
+  //   return () => {
+  //     tl.kill(); // Clears the timeline when the component unmounts
+  //   };
+  // }, []);
   useEffect(() => {
-    // Mark the client-side rendering as completed
     setIsClient(true);
-    
+
     const tl = gsap.timeline({
+      defaults: { ease: "power3.inOut", duration: 0.8 },
       onComplete: () => {
-        // Animation is complete, you can add any callback here if needed
         console.log("Loader animation complete");
-      }
+      },
     });
-    
-    // Initial setup
-    gsap.set(topPanelRef.current, { y: "-150%" });
-    gsap.set(bottomPanelRef.current, { y: "150%" });
-    
-    // Animation sequence
+
+    // Setup
+    gsap.set(topPanelRef.current, { yPercent: -150 });
+    gsap.set(bottomPanelRef.current, { yPercent: 150 });
+
     for (let i = 0; i < images.length; i++) {
       // Shutter in
       tl.to([topPanelRef.current, bottomPanelRef.current], {
-        y: 0,
-        duration: 0.8,
-        ease: "power2.inOut",
+        yPercent: 0,
       });
 
-      // Set new image/text
-      tl.add(() => {
-        setIndex(i);
-      });
-
-      // Shutter out
-      tl.to(topPanelRef.current, {
-        y: "-150%",
-        duration: 0.8,
-        ease: "power4.inOut",
-      });
+      // Fade out current image/text and fade in new
       tl.to(
-        bottomPanelRef.current,
+        loaderContainerRef.current,
         {
-          y: "150%",
-          duration: 0.8,
-          ease: "power4.inOut",
+          opacity: 0,
+          duration: 0.3,
+          ease: "power1.out",
+          onComplete: () => setIndex(i),
+        },
+        "<0.2"
+      ).to(
+        loaderContainerRef.current,
+        {
+          opacity: 1,
+          duration: 0.3,
+          ease: "power1.in",
         },
         "<"
-      ); // run together
+      );
 
-      // Optional pause before next
-      tl.to({}, { duration: 0.5 });
+      // Shutter out
+      tl.to(topPanelRef.current, { yPercent: -150 });
+      tl.to(bottomPanelRef.current, { yPercent: 150 }, "<");
+
+      // Pause
+      tl.to({}, { duration: 0.4 });
     }
 
-    // Final shutter open at end
-    tl.to(topPanelRef.current, {
-      y: "0",
-      duration: 0.8,
-      ease: "power4.inOut",
-    });
-    tl.to(
-      bottomPanelRef.current,
-      {
-        y: "0",
-        duration: 0.8,
-        ease: "power4.inOut",
-      },
-      "<"
-    );
+    // Final shutter in (both panels)
+    tl.to([topPanelRef.current, bottomPanelRef.current], { yPercent: 0 });
 
     return () => {
-      tl.kill(); // Clears the timeline when the component unmounts
+      tl.kill();
     };
   }, []);
 
@@ -94,7 +149,7 @@ export default function Loader() {
     <>
       {!isClient && <Loading />}
 
-      <div 
+      <div
         ref={loaderContainerRef}
         style={{ display: isClient ? "block" : "none" }}
         className="fixed top-0 left-0 w-full h-full z-50"
@@ -157,9 +212,10 @@ export default function Loader() {
               />
             </div>
             <div
-              className={`${
+              key={index}
+              className={`transition-opacity duration-500 ease-in-out ${
                 isClient ? "text-white" : "text-black"
-              } text-[15rem] relative font-bold z-10`}
+              } text-[15rem] font-bold z-10`}
             >
               {texts[index]}
             </div>
