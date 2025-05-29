@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clear-cache": "rmdir /s /q .next\\cache"
   },
   "dependencies": {
+    "framer-motion": "^12.15.0",
     "gsap": "^3.12.7",
     "lenis": "^1.3.3",
     "lottie-react": "^2.4.1",

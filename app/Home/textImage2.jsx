@@ -148,7 +148,7 @@ const TextImage2 = () => {
           className=" w-[700px] h-auto object-cover hidden text-center max-lg:block "
         />
       </div>
-      <div className="grid grid-cols-2 h-full">
+      <div className="grid grid-cols-2 custom-grid h-full">
         <div className="ml-[10rem] flex  flex-col justify-center max-sm:max-w-full max-sm:ml-0 max-sm:px-[15px] pr-[10rem]  max-lg:pb-[20rem]">
           <h2 className="text-[#7BB338] font-semibold  text-[3.6rem] mb-2 textImage2-content1 max-sm:text-center max-lg:text-[4rem] max-sm:mb-6">
             A Journey That Fits You

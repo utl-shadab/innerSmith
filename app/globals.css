@@ -107,14 +107,181 @@ button:hover {
   img.logo_brand {
     max-width: 110px;
   }
+  
 }
 @media screen and (max-width: 991px) {
   :root {
     font-size: 6.5px; /* Reduced from 7px */
   }
+ .herocontent {
+        padding-top: 23rem;
+    }
+     .mobile-and-tablet {
+        font-size: 12rem;
+    }
+    .herosupportline {
+        font-size: 4rem;
+        margin-top: 2rem;
+    }
+    .animate-bounce {
+        width: 7rem;
+        height: 7rem;
+    }
+    .heronavigation h4 {
+        font-size: 2rem;
+    }
+  .tablet {
+        font-size: 4rem;
+    }
+  .about-content{
+    margin-top: 70vh;
+  }
+     .about-content1 {
+        font-size: 5rem;
+        text-align: center;
+        /* word-spacing: -0.2vw; */
+    }
+
+ 
+  .second-section{
+     display: flex;
+    flex-direction: column;
+    margin-inline: 5vw;
+  }
+     .textsvg2-content1 {
+        font-size: 3.5rem;
+        margin-top: 2vh;
+    }
+ .second-section p {
+        font-size: 4rem;
+        margin-top: 1vw;
+    }
+  .swiper-creative {
+    height: 70vh;
+  }
+    .affected-Text {
+        width: 100%;
+        font-size: 5rem;
+        text-align: left;
+        display: flex
+;
+        justify-content: left;
+        margin-left: 34rem;
+    }
+  .affected-slider{
+    height: 40vh;
+  }
+ .affected-title {
+    font-size: 8rem;
+  }
+
+  .people {
+    font-size: 5vw;
+  }
+
+  .affected-number {
+    font-size: 5rem;
+  }
+  .fourth-section{
+    display: block;
+    margin-top: 10vh;
+  }
+  .fourth-sec-text{
+    font-size: 4rem;
+  }
+  .fifth-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .fifth-p{
+    font-size: 4rem;
+  }
+  .textImage3-content1 {
+    font-size: 3.5rem;
+    margin-top: 2vh;
+  }
+  .fifth-img img{
+    width: 80%;
+    height: 40vh;
+    object-fit: contain;
+  }
+  .custom-grid{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+  .mobileSlider-text h2 {
+    font-size: 3.5rem;
+    margin-top: 2vh;
+  }
+  .mobileSlider-text p {
+    font-size: 4rem;
+  }
 }
 @media screen and (max-width: 540px) {
   :root {
     font-size: 3.8px; /* Reduced from 4px */
+  }
+  .affected-title {
+    font-size: 15vw;
+  }
+      .affected-Text {
+        font-size: 8vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    font-size: 3px;
+  }
+  .affected-title {
+    font-size: 12vw;
+  }
+  .affected-Text {
+    font-size: 6vw;
+  }
+}
+@media screen and (max-width: 400px) {
+  :root {
+    font-size: 2px;
+  }
+  .affected-title {
+    font-size: 10vw;
+  }
+  .affected-Text {
+    font-size: 5vw;
+  }
+}
+@media screen and (max-width: 360px) {
+  :root {
+    font-size: 1.5px;
+  }
+  .affected-title {
+    font-size: 8vw;
+  }
+  .affected-Text {
+    font-size: 4vw;
+  }
+}
+@media screen and (max-width: 320px) {
+  :root {
+    font-size: 1px;
+  }
+  .affected-title {
+    font-size: 6vw;
+  }
+  .affected-Text {
+    font-size: 3vw;
+  }
+}
+@media screen and (max-width: 280px) {
+  :root {
+    font-size: 0.8px;
+  }
+  .affected-title {
+    font-size: 5vw;
+  }
+  .affected-Text {
+    font-size: 2.5vw;
   }
 }
